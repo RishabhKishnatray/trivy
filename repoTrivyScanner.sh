@@ -1,9 +1,9 @@
 #!/bin/bash
 source functions.sh
 source log-functions.sh
-
-code="$WORKSPACE/$CODEBASE_DIR"
-cd $code
+cd  "${CODEBASE_LOCATION}"
+#code="$WORKSPACE/$CODEBASE_DIR"
+#cd $code
 if [ -d "reports" ]; then
     true
 else
