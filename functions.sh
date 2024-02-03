@@ -42,16 +42,6 @@ function getDockerfileName() {
   getNthTextInALine "$DOCKERFILE_ENTRY" : 1
 }
 
-function getProjectEnv() {
-  PROJECT_ENV_NAME=$(jq -r .environment.project_env  < /bp/data/environment_build)
-  getNthTextInALine "$PROJECT_ENV_NAME" : 1
-}
-
-function getServiceName() {
-  PROJECT_SVC_NAME=$(jq -r .component.name  < /bp/data/environment_build)
-  getNthTextInALine "$PROJECT_SVC_NAME" : 1
-}
-
 function saveTaskStatus() {
   TASK_STATUS="$1"
   ACTIVITY_SUB_TASK_CODE="$2"  
