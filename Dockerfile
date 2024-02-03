@@ -1,4 +1,4 @@
-FROM aquasec/trivy:0.48.1
+FROM aquasec/trivy:0.48.3
 
 RUN apk add --no-cache --upgrade bash
 RUN apk add jq
