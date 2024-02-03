@@ -21,12 +21,12 @@ STATUS=0
     logInfoMessage "trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} --exit-code 1 ${FORMAT_ARG} -o reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}"
     trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} --exit-code 1 ${FORMAT_ARG} -o reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}
 STATUS=`echo $?`
-if [ -s "reports/${OUTPUT_ARG}" ]; then
-   cd reports
-   cat ${OUTPUT_ARG}
-else
-    echo "NO ${SCAN_TYPE} FOUND"
-fi
+#if [ -s "reports/${OUTPUT_ARG}" ]; then
+#   cd reports
+#   cat ${OUTPUT_ARG}
+#else
+#    echo "NO ${SCAN_TYPE} FOUND"
+#fi
 
 
 if [ $STATUS -eq 0 ]
