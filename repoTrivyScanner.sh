@@ -21,7 +21,8 @@ STATUS=0
     trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} --exit-code 1 ${FORMAT_ARG} -o reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}
 
 if [ -s "reports/${OUTPUT_ARG}" ]; then
-    cat reports/${OUTPUT_ARG}
+   cd reports
+   cat ${OUTPUT_ARG}
 else
     echo "NO ${SCAN_TYPE} FOUND"
 fi
