@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+
 source functions.sh
 source log-functions.sh
 cd  "${CODEBASE_LOCATION}"
