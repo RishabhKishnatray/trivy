@@ -15,18 +15,18 @@ STATUS=0
     logInfoMessage "I'll scan source-code licenses ${WORKSPACE}/${CODEBASE_DIR} for only ${SCAN_SEVERITY} severities"
     sleep  $SLEEP_DURATION
     logInfoMessage "Executing command"
-#    logInfoMessage "trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} ${FORMAT_ARG} ${WORKSPACE}/${CODEBASE_DIR}"
-#    trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} ${FORMAT_ARG} ${WORKSPACE}/${CODEBASE_DIR}
+    logInfoMessage "trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} ${FORMAT_ARG} ${WORKSPACE}/${CODEBASE_DIR}"
+    trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} ${FORMAT_ARG} ${WORKSPACE}/${CODEBASE_DIR}
     logInfoMessage "trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} --exit-code 1 ${FORMAT_ARG} -o reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}"
     trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} --exit-code 1 ${FORMAT_ARG} -o reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}
 
-if [ -s "reports/${OUTPUT_ARG}" ]; then
-    cat reports/${OUTPUT_ARG}
-else
-    echo "NO ${SCAN_TYPE} FOUND"
-fi
+#if [ -s "reports/${OUTPUT_ARG}" ]; then
+#    cat reports/${OUTPUT_ARG}
+#else
+#    echo "NO ${SCAN_TYPE} FOUND"
+#fi
 
-    STATUS=`echo $?`
+STATUS=`echo $?`
 
 if [ $STATUS -eq 0 ]
 then
