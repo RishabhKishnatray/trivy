@@ -15,7 +15,7 @@ STATUS=0
     sleep  "$SLEEP_DURATION"
     logInfoMessage "Executing command"
     logInfoMessage "trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} --exit-code 1 ${FORMAT_ARG} -o reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}"
-    trivy repo -q --severity "${SCAN_SEVERITY}" --scanners "${SCAN_TYPE}" --exit-code 1 "${FORMAT_ARG}" -o reports/"${OUTPUT_ARG}" "${WORKSPACE}"/"${CODEBASE_DIR}"
+    trivy repo -q --severity "${SCAN_SEVERITY}" --scanners "${SCAN_TYPE}" --exit-code 1 --format "${FORMAT_ARG}" -o reports/"${OUTPUT_ARG}" "${WORKSPACE}"/"${CODEBASE_DIR}"
 STATUS=$(echo $?)
 if [ -s "reports/${OUTPUT_ARG}" ]; then
    cat reports/"${OUTPUT_ARG}"
