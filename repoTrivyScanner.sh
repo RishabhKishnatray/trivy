@@ -2,9 +2,8 @@
 #set -x
 source functions.sh
 source log-functions.sh
-cd  "${CODEBASE_LOCATION}"
-#code="$WORKSPACE/$CODEBASE_DIR"
-#cd $code
+cd  "$WORKSPACE/$CODEBASE_DIR"
+
 if [ -d "reports" ]; then
     true
 else
@@ -16,8 +15,6 @@ STATUS=0
     logInfoMessage "I'll scan source-code licenses ${WORKSPACE}/${CODEBASE_DIR} for only ${SCAN_SEVERITY} severities"
     sleep  $SLEEP_DURATION
     logInfoMessage "Executing command"
-#    logInfoMessage "trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} ${FORMAT_ARG} ${WORKSPACE}/${CODEBASE_DIR}"
-#    trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} ${FORMAT_ARG} ${WORKSPACE}/${CODEBASE_DIR}
     logInfoMessage "trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} --exit-code 1 ${FORMAT_ARG} -o reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}"
     trivy repo -q --severity ${SCAN_SEVERITY} --scanners ${SCAN_TYPE} --exit-code 1 ${FORMAT_ARG} -o reports/${OUTPUT_ARG} ${WORKSPACE}/${CODEBASE_DIR}
 STATUS=`echo $?`
@@ -40,4 +37,5 @@ elif [ $VALIDATION_FAILURE_ACTION == "FAILURE" ]
    else
     logWarningMessage "Please check triyv scan failed!!!"
     generateOutput ${ACTIVITY_SUB_TASK_CODE} true "Please check triyv scan failed!!!"
+    exit 1
 fi
