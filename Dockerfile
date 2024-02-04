@@ -10,7 +10,8 @@ COPY repoTrivyScanner.sh .
 
 COPY functions.sh .
 COPY log-functions.sh .
-
+ENV IMAGE_NAME registry.buildpiper.in/trivy-scan
+ENV 1.2
 ENV ACTIVITY_SUB_TASK_CODE BP-TRIVY-TASK
 ENV SLEEP_DURATION 5s
 ENV VALIDATION_FAILURE_ACTION WARNING
