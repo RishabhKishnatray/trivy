@@ -17,4 +17,4 @@ ENV SCAN_TYPE ""
 ENV SCAN_SEVERITY "HIGH,CRITICAL"
 ENV FORMAT_ARG "json"
 ENV OUTPUT_ARG "trivy-report.json"
-ENTRYPOINT [ "filesystemTrivyScanner.sh" ]
+ENTRYPOINT [ "./filesystemTrivyScanner.sh" ]
